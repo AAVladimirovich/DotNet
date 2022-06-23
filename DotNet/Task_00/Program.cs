@@ -10,3 +10,17 @@ Console.WriteLine("введите число");
 String str = Console.ReadLine();
 int num = Convert.ToInt32(str);
 Console.WriteLine($"kvadrat chisla {num} budet raven {num*num}");
+double d = 5.55;
+int i = (int) d;
+Console.WriteLine(i);
+
+if (num > 5)
+{
+    Console.WriteLine("eto chislo bolshe 5");
+}
+else Console.WriteLine("chislo menshe 5");
+
+// while (num > 5)
+// {
+
+// }
