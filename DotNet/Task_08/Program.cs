@@ -17,8 +17,8 @@ if (N <= 1)
 else
     while (i <= N)
     {
-        int ostatok = i % 2;
-        if (ostatok == 0)
+        //int ostatok = i % 2;
+        if (i % 2 == 0)
         {
             nums[cnt] = i;
             cnt++;
