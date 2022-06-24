@@ -7,8 +7,8 @@
 // -7 -> 49
 
 Console.WriteLine("введите число");
-String str = Console.ReadLine();
-int num = Convert.ToInt32(str);
+//String str = Convert.ToString(Console.ReadLine());
+int num = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine($"kvadrat chisla {num} budet raven {num * num}");
 double d = 5.55;
 int i = (int)d;
