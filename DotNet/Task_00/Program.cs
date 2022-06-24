@@ -9,9 +9,9 @@
 Console.WriteLine("введите число");
 String str = Console.ReadLine();
 int num = Convert.ToInt32(str);
-Console.WriteLine($"kvadrat chisla {num} budet raven {num*num}");
+Console.WriteLine($"kvadrat chisla {num} budet raven {num * num}");
 double d = 5.55;
-int i = (int) d;
+int i = (int)d;
 Console.WriteLine(i);
 
 if (num > 5)
