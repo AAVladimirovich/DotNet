@@ -4,8 +4,8 @@
 // 456 -> 46
 // 782 -> 72
 // 918 -> 98
-
-int rndNum = new Random().Next(101, 1000);
+var randomGod = new Random();
+int rndNum = randomGod.Next(101, 1000);
 Console.WriteLine($"Случайное число из отрезка 100 - 999 => {rndNum}");
 
 // int MaxDigit(int num)
