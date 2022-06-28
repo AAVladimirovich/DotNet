@@ -40,5 +40,5 @@ if (a < 100)
 }
 else
 {
-    ThirdChisloIdentifier(a, Razryad(a),3);
+    ThirdChisloIdentifier(a, Razryad(a), 3);
 }
