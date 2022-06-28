@@ -3,3 +3,18 @@
 // 6 -> да
 // 7 -> да
 // 1 -> нет
+
+Console.WriteLine(@"Задача 15: Напишите программу, которая принимает на вход цифру,
+обозначающую день недели, и проверяет, является ли этот день выходным.");
+Console.Write("Введите цифру = ");
+int a = Convert.ToInt32(Console.ReadLine());
+
+if (a > 0 && a < 8)
+{
+    string answerForQuestion = (a == 6) || (a == 7) ? " -> да" : " -> нет";
+    Console.Write(answerForQuestion);
+}
+else
+{
+    Console.Write(" -> день недели должен быть от 1 до 7");
+}
