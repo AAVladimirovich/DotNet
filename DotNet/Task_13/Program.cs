@@ -27,7 +27,7 @@ void ThirdChisloIdentifier(int in_number, int in_razryadVhodnogoChisla, int in_k
         i++;
     }
 
-    Console.WriteLine($"{in_kakoeChisloNaiti} - тье число равно -> {in_number % 10}");
+    Console.Write($"{in_kakoeChisloNaiti} - тье число равно -> {in_number % 10}");
 
 }
 
