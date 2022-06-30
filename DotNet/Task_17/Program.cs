@@ -17,6 +17,18 @@ int Y = Convert.ToInt32(Console.ReadLine());
 // else if (X > 0 && Y < 0) Console.WriteLine("chetvertaya chetvert'");
 // else Console.WriteLine("vvedeni nekorrektnie coordinati");
 
+string Voo(int in_X, int in_Y)
+{
+    switch ((in_X, in_Y))
+    {
+        case ( > 0, > 0): return "pervaya chetvert"; break;
+        case ( < 0, > 0): return "vtoraya chetvert"; break;
+        case ( < 0, < 0): return "tretya chetvert"; break;
+        case ( > 0, < 0): return "chetvertaya chetvert"; break;
+        default: return "vvedeni nekorrektnie coordinati"; break;
+    }
+}
+
 string Vooter(int in_X, int in_Y)
 {
     if (in_X > 0 && in_Y > 0) return "pervaya chetvert'";
@@ -26,5 +38,7 @@ string Vooter(int in_X, int in_Y)
     else return "vvedeni nekorrektnie coordinati";
 }
 
-string result = Vooter(X,Y);
+string result = Vooter(X, Y);
+Console.WriteLine(result);
+result = Voo(X, Y);
 Console.WriteLine(result);
