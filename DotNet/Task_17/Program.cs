@@ -40,5 +40,5 @@ string Vooter(int in_X, int in_Y)
 
 string result = Vooter(X, Y);
 Console.WriteLine(result);
-result = Voo(X, Y);
-Console.WriteLine(result);
+// result = Voo(X, Y);
+// Console.WriteLine(result);
