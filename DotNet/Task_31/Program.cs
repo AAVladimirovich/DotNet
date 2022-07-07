@@ -53,3 +53,6 @@ int[] array = CreateArrayRndInt(12, -9, 9);
 int[] sumArr = GetSumPosNegElement(array);
 PrintResult(array);
 PrintResult(sumArr);
+
+string str = "привет";
+char ch = 'a';
