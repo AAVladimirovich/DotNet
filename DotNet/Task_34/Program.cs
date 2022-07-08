@@ -16,10 +16,10 @@ int[] ThreeElementRandomArrayCreator(int in_arrSize)
     var randomGod = new Random();
     int[] vFrRtrn = new int[in_arrSize];
 
-        for (int i = 0; i < vFrRtrn.Length; i++)
-        {
-            vFrRtrn[i] = randomGod.Next(100, 1000);
-        }
+    for (int i = 0; i < vFrRtrn.Length; i++)
+    {
+        vFrRtrn[i] = randomGod.Next(100, 1000);
+    }
 
     return vFrRtrn;
 
@@ -27,15 +27,14 @@ int[] ThreeElementRandomArrayCreator(int in_arrSize)
 
 int EvenDetector(int[] in_array)
 {
-    int vFrRtrn = 0; 
-        for (int i = 0; i < in_array.Length; i++)
-        {
-            if (in_array[i] % 2 == 0)
-            {
-                vFrRtrn ++;
-            }
-            
-        }
+    int vFrRtrn = 0;
+    for (int i = 0; i < in_array.Length; i++)
+    {
+
+        bool isEven = Convert.ToBoolean(in_array[i] % 2) ? false : true;
+        if (isEven) vFrRtrn++;
+
+    }
 
     return vFrRtrn;
 
