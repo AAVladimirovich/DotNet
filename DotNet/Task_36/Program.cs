@@ -52,4 +52,4 @@ void PrintResult(int[] arr)
 int[] arrayForTask = RandomArrayCreator(8);
 PrintResult(arrayForTask);
 int oddSummator = OddSummator(arrayForTask);
-Console.WriteLine($" Сумма нечётных чисел = {oddSummator}");
+Console.WriteLine($" Сумма нечётных индексов массива = {oddSummator}");
