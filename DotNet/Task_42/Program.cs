@@ -16,3 +16,12 @@ int TenToTwo(int n)
 }
 
 Console.WriteLine(TenToTwo(a));
+
+int b = 13;
+void ToBin(int n, int basenum)
+{
+    if (n == 0) return;
+    ToBin(n / basenum, basenum);
+    Console.Write(n % basenum,basenum);
+}
+ToBin(b,2);
