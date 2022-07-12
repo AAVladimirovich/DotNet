@@ -22,6 +22,7 @@ void ToBin(int n, int basenum)
 {
     if (n == 0) return;
     ToBin(n / basenum, basenum);
-    Console.Write(n % basenum,basenum);
+    Console.Write(n % basenum);
 }
+
 ToBin(b,2);
