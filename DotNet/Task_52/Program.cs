@@ -46,7 +46,7 @@ void PrintMatrix(int[,] in_array)
 void PrintArray(double[] in_array)
 {
     Console.WriteLine(@$"
-    Среднее арифметическое строк ↓
+    Среднее арифметическое каждого столбца ↓
     ");
 
     for (int i = 0; i < in_array.GetLength(0); i++)
