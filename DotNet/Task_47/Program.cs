@@ -23,20 +23,20 @@ void FillMatrixWithRandomDoubleValue(double[,] in_array, double in_minValue, dou
 
 }
 
-void PrintMatrix(double[,] arr)
+void PrintMatrix(double[,] in_array)
 {
     Console.WriteLine(@$"
-    Массив размерности [{arr.GetLength(0)},{arr.GetLength(1)}] ↓
+    Массив размерности [{in_array.GetLength(0)},{in_array.GetLength(1)}] ↓
     ");
 
-    for (int i = 0; i < arr.GetLength(0); i++)
+    for (int i = 0; i < in_array.GetLength(0); i++)
     {
 
-        for (int j = 0; j < arr.GetLength(1); j++)
+        for (int j = 0; j < in_array.GetLength(1); j++)
         {
             if (j == 0) Console.Write("|");
-            if (j < arr.GetLength(1) - 1) Console.Write($"| [{i}][{j}] = {arr[i, j],4} |");
-            else Console.Write($"| [{i}][{j}] = {arr[i, j],4} ||");
+            if (j < in_array.GetLength(1) - 1) Console.Write($"| [{i}][{j}] = {in_array[i, j],4} |");
+            else Console.Write($"| [{i}][{j}] = {in_array[i, j],4} ||");
         }
 
         Console.WriteLine();
