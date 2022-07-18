@@ -4,28 +4,29 @@ void PrintMatrix((int x, int y)[]arr)
 {
     //Console.WriteLine(arr.GetLength(0));
 
-    // foreach (var e in arr)
-    // {
+    foreach (var e in arr)
+    {
 
-    //         Console.WriteLine($"{e}");
-    // }
-     for (int i = 0; i < arr.GetLength(0); i++)
-     {
+            Console.WriteLine($"{e}");
+            //Console.WriteLine($"{y}");
+    }
+    //  for (int i = 0; i < arr.GetLength(0); i++)
+    //  {
 
-        //  for (int j = 0; j < arr.GetLength(1); j++)
-        //  {
-            //  if (i == 0) Console.Write("");
-            //  if (i < arr.GetLength(0) - 1) Console.Write($"| [{i}] = {arr[i],4} |");
-            //  else Console.Write($"| [{i}] = {arr[i],4} |");
+    //     //  for (int j = 0; j < arr.GetLength(1); j++)
+    //     //  {
+    //         //  if (i == 0) Console.Write("");
+    //         //  if (i < arr.GetLength(0) - 1) Console.Write($"| [{i}] = {arr[i],4} |");
+    //         //  else Console.Write($"| [{i}] = {arr[i],4} |");
 
-            if (i == 0) Console.Write("");
-             if (i < arr.GetLength(0) - 1) Console.Write($"| [{e[i]} |");
-             else Console.Write($"| [{e[i]} |");
-        //  }
+    //         if (i == 0) Console.Write("");
+    //          if (i < arr.GetLength(0) - 1) Console.Write($"| [{e[i]} |");
+    //          else Console.Write($"| [{e[i]} |");
+    //     //  }
 
-         Console.WriteLine();
+    //      Console.WriteLine();
 
-     }
+    //  }
 
 }
 
