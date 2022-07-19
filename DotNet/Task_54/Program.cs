@@ -70,6 +70,7 @@ void ColumnSeparatorChanger(int[,] argArray)
 
     for (int i = 0; i < argArray.GetLength(0); i++)
     {
+        //цикл для запихивания значений строк в элемент 
         for (int j = 0; j < argArray.GetLength(1); j++)
         {
             if (j == 0) valueForMethodReturn[i] = Convert.ToString(argArray[i, j]); else valueForMethodReturn[i] = valueForMethodReturn[i] + "," + Convert.ToString(argArray[i, j]);
