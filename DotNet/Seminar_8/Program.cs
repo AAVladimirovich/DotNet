@@ -113,9 +113,8 @@ int [] SummUniqValuesInArray(int[] in_array,int[] in_array2)
         else 
         {
             actualValue = in_array[i];
-            in_array2[iForSecondArray] = count;
+            in_array2[iForSecondArray++] = count;
             count  = 1;
-            iForSecondArray ++;
         } 
 
         if (i == in_array.Length-1)
