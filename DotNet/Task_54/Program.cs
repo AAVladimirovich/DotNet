@@ -8,8 +8,9 @@
 // 2 3 5 9
 // 2 4 4 8.
 
-Console.Clear();
+using System.Linq;
 
+Console.Clear();
 Console.WriteLine(@"Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 Например, задан массив:
 1 4 7 2
@@ -21,7 +22,7 @@ Console.WriteLine(@"Задайте двумерный массив. Напиши
 2 4 4 8.
 ");
 
-void FillMatrixElementsWithRandomIntValue(int[,] argArray, int argMinRndValue = 1, int argMaxRndValue = 99)
+void FillMatrixElementsWithRandomIntValue(int[,] argArray, int argMinRndValue = 1, int argMaxRndValue = 20)
 {
     var rndGenerator = new Random();
 
@@ -60,80 +61,48 @@ void PrintMatrix(int[,] argArray, string argText = "")
     }
 }
 
-void PrintArray(int[] argArray, string argText = "")
+void ColumnSeparatorChanger(int[,] argArray)
 {
-    Console.WriteLine();
-    if (argText != "") Console.WriteLine(@$" [{argText}] ");
+
+    string[] valueForMethodReturn = new string[argArray.GetLength(0)];
+    string[] strVar = new string[argArray.GetLength(1)];
+    int[] intVar = new int[argArray.GetLength(1)];
 
     for (int i = 0; i < argArray.GetLength(0); i++)
     {
-        if (i == 0) Console.Write("[");
-        if (i < argArray.GetLength(0) - 1) Console.Write($" {argArray[i],4};");
-        else Console.Write($" {argArray[i],4} ]");
-    }
-}
-
-
-int[] ConvertToOneDimensionArray(int[,] argArray)
-{
-
-    int[] valueForMethodReturn = new int[argArray.Length];
-    int count = 0;
-    
-    foreach(var element in argArray)
-    {
-        valueForMethodReturn[count++] = element;
-    }
-
-    return valueForMethodReturn;
-
-}
-
-int[] SummUniqValuesInArray(int[] argArray, int[] argArray2)
-{
-    int count = 0;
-    int actualValue = argArray[0];
-    int iForSecondArray = 0;
-
-    for (int i = 0; i < argArray.Length; i++)
-    {
-        if (actualValue == argArray[i])
+        for (int j = 0; j < argArray.GetLength(1); j++)
         {
-            count++;
-        }
-        else
-        {
-            actualValue = argArray[i];
-            argArray2[iForSecondArray++] = count;
-            count = 1;
+            if (j == 0) valueForMethodReturn[i] = Convert.ToString(argArray[i, j]); else valueForMethodReturn[i] = valueForMethodReturn[i] + "," + Convert.ToString(argArray[i, j]);
         }
 
-        if (i == argArray.Length - 1)
+        strVar = valueForMethodReturn[i].Split(",");
+
+        int cnt = 0;
+        foreach (var element in strVar)
         {
-            argArray2[iForSecondArray] = count;
+            intVar[cnt++] = Convert.ToInt32(element);
+        }
+
+        Array.Sort(intVar);
+        Array.Reverse(intVar);
+
+        for (int j = 0; j < argArray.GetLength(1); j++)
+        {
+            argArray[i, j] = intVar[j];
         }
 
     }
-
-    return argArray2;
 
 }
 
 Console.Write("Введите количество строк в двумерном массиве m = ");
-int m = int.Parse(Console.ReadLine());
+int m = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите количество столбцов в двумерном массиве n = ");
-int n = int.Parse(Console.ReadLine());
+int n = Convert.ToInt32(Console.ReadLine());
 int[,] arrayForTask = new int[m, n];
 
-FillMatrixElementsWithRandomIntValue(arrayForTask, argMaxRndValue: 10);
-PrintMatrix(arrayForTask,"Первоначальный массив:");
+FillMatrixElementsWithRandomIntValue(arrayForTask);
+PrintMatrix(arrayForTask, "!!!!!!Первоначальный массив:");
 
-int[] oneDimensionArray = ConvertToOneDimensionArray(arrayForTask);
-Array.Sort(oneDimensionArray);
-PrintArray(oneDimensionArray,"Массив после метода ConvertToOneDimensionArray и метода Array.Sort(oneDimensionArray)");
-
-int[] uniqArray = oneDimensionArray.Distinct().ToArray();
-PrintArray(uniqArray,"Массив уникальных значений после int[] uniqArray = oneDimensionArray.Distinct().ToArray() ");
-
-uniqArray = SummUniqValuesInArray(oneDimensionArray, uniqArray);
-PrintArray(uniqArray,"Массив после использования метода SummUniqValuesInArray = ");
+ColumnSeparatorChanger(arrayForTask);
+PrintMatrix(arrayForTask, "!!!!!!Переформатированный массив после метода ColumnSeparatorChanger(arrayForTask)");
