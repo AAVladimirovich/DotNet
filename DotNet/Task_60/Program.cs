@@ -42,6 +42,24 @@ void PrintMatrix(int[,,] argArray, string argText = "")
     Массив размерности [{argArray.GetLength(0)},{argArray.GetLength(1)},{argArray.GetLength(2)}] ↓
     ");
 
+    // for (int i = 0; i < argArray.GetLength(0); i++)
+    // {
+
+    //     for (int j = 0; j < argArray.GetLength(1); j++)
+    //     {
+    //         for (int k = 0; k < argArray.GetLength(2); k++)
+    //         {
+    //             if (k == 0) Console.Write("|");
+    //             if (k < argArray.GetLength(2) - 1) Console.Write($"| [{i}][{j}][{k}] = {argArray[i, j, k],4} |");
+    //             else Console.Write($"| [{i}][{j}][{k}] = {argArray[i, j, k],4} ||");
+    //         }
+
+    //     }
+
+    //     Console.WriteLine();
+
+    // }
+
     for (int i = 0; i < argArray.GetLength(0); i++)
     {
 
@@ -49,15 +67,12 @@ void PrintMatrix(int[,,] argArray, string argText = "")
         {
             for (int k = 0; k < argArray.GetLength(2); k++)
             {
-                if (k == 0) Console.Write("|");
-                if (k < argArray.GetLength(2) - 1) Console.Write($"| [{i}][{j}][{k}] = {argArray[i, j, k],4} |");
-                else Console.Write($"| [{i}][{j}][{k}] = {argArray[i, j, k],4} ||");
+                if (k < argArray.GetLength(2) - 1) Console.Write($" {argArray[i, j, k],4}({i},{j},{k}) ");
+                else Console.Write($" {argArray[i, j, k],4}({i},{j},{k})");
             }
-
+            Console.WriteLine();
         }
 
-        Console.WriteLine();
-        
     }
 }
 
