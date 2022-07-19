@@ -61,35 +61,55 @@ void PrintMatrix(int[,] argArray, string argText = "")
     }
 }
 
+string RowToString(int[,] argArray, int argI, string textSeparator = ",")
+{
+
+    string valueForMethodReturn = "";
+
+    for (int j = 0; j < argArray.GetLength(1); j++)
+    {
+        if (j == 0) valueForMethodReturn = Convert.ToString(argArray[argI, j]); else valueForMethodReturn += textSeparator + Convert.ToString(argArray[argI, j]);
+    }
+
+    return valueForMethodReturn;
+}
+
+void StringToIntArray(string[] argStringArray, int[] argIntArray)
+{
+
+    int cnt = 0;
+    foreach (var element in argStringArray)
+    {
+        argIntArray[cnt++] = Convert.ToInt32(element);
+    }
+}
+
 void ColumnSeparatorChanger(int[,] argArray)
 {
 
-    string[] valueForMethodReturn = new string[argArray.GetLength(0)];
-    string[] strVar = new string[argArray.GetLength(1)];
-    int[] intVar = new int[argArray.GetLength(1)];
+    string rowToOneString = "";
+    string[] stringArray = new string[argArray.GetLength(1)];
+    int[] intArray = new int[argArray.GetLength(1)];
 
     for (int i = 0; i < argArray.GetLength(0); i++)
     {
-        //цикл для запихивания значений строк в элемент 
+        //цикл для присваивания значений массива в одну строку и добавляем сепаратор ","
+        rowToOneString = RowToString(argArray, i);
+
+        //присваиваем в массив через метод Split строки
+        stringArray = rowToOneString.Split(",");
+
+        //конвертируем значения строкового массива в инт массив
+        StringToIntArray(stringArray,intArray);
+
+        //упорядочиваем по возрастанию и переворачиваем массив
+        Array.Sort(intArray);
+        Array.Reverse(intArray);
+
+        //присваиваем уже перевернутый отсортированный массив intVar в целевой массив задачи
         for (int j = 0; j < argArray.GetLength(1); j++)
         {
-            if (j == 0) valueForMethodReturn[i] = Convert.ToString(argArray[i, j]); else valueForMethodReturn[i] = valueForMethodReturn[i] + "," + Convert.ToString(argArray[i, j]);
-        }
-
-        strVar = valueForMethodReturn[i].Split(",");
-
-        int cnt = 0;
-        foreach (var element in strVar)
-        {
-            intVar[cnt++] = Convert.ToInt32(element);
-        }
-
-        Array.Sort(intVar);
-        Array.Reverse(intVar);
-
-        for (int j = 0; j < argArray.GetLength(1); j++)
-        {
-            argArray[i, j] = intVar[j];
+            argArray[i, j] = intArray[j];
         }
 
     }
