@@ -32,31 +32,6 @@ void FillMatrixElementsWithRandomIntValue(int[,] argArray, int argMinRndValue = 
 
 }
 
-int ReturnMinimunRowNumber(int[,] argArray)
-{
-    int[] intArray = new int[argArray.GetLength(1)];
-    int sum = 9999;
-    int memoryRow =0;
-
-    for (int i = 0; i < argArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < argArray.GetLength(1); j++)
-        {
-            intArray[i] += argArray[i, j];
-        }
-        // Console.WriteLine($"Сумма строки {i} = {intArray[i]}"); //для проверки
-
-        if (sum > intArray[i]) 
-        {
-            sum = intArray[i];
-            memoryRow = i;
-        }
-
-    }
-
-    return memoryRow;
-
-}
 void PrintMatrix(int[,] argArray, string argText = "")
 {
     Console.WriteLine();
@@ -81,14 +56,55 @@ void PrintMatrix(int[,] argArray, string argText = "")
     }
 }
 
-Console.Write("Введите число стороны для двумерном массива m = ");
+int[,] ProductOfMatrixes(int[,] argMatrixA, int[,] argMatrixB)
+{
+
+    int[,] arrayForMethodReturn = new int[argMatrixA.GetLength(0), argMatrixB.GetLength(1)];
+
+    if (argMatrixA.GetLength(1) != argMatrixB.GetLength(0))
+    {
+        Console.WriteLine(@$"!!!. Внимание. Ошибка выполнения условия произведения матриц. Количество столбцов матрицы А = {argMatrixA.GetLength(0)} 
+        должно совпадать с количеством строк Матрицы В = {argMatrixB.GetLength(1)}");
+    }
+    else
+    {
+        for (int i = 0; i < arrayForMethodReturn.GetLength(0); i++)
+        {
+            for (int j = 0; j < arrayForMethodReturn.GetLength(1); j++)
+            {
+                arrayForMethodReturn[i, j] = ProductExp(i, j, argMatrixA, argMatrixB);
+            }
+        }
+        return arrayForMethodReturn;
+    }
+    return arrayForMethodReturn;
+}
+
+int ProductExp(int argI, int argJ, int[,] argMatrixA, int[,] argMatrixB)
+{
+    int valueForReturn = 0;
+    for (int i = 0; i < argMatrixA.GetLength(1); i++)
+    {
+        valueForReturn += argMatrixA[argI, i] * argMatrixB[i, argJ];
+    }
+    return valueForReturn;
+}
+
+Console.Write("Введите количество строк для двумерного массива A m = ");
 int m = Convert.ToInt32(Console.ReadLine());
-int[,] arrayForTask = new int[m, m];
-int[,] secondArrayForTask = new int[m, m];
+Console.Write("Введите количество столбцов для двумерного массива A n = ");
+int n = Convert.ToInt32(Console.ReadLine());
+int[,] firstArrayForTask = new int[m, n];
+Console.Write("Введите количество строк для двумерного массива B m = ");
+m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов для двумерного массива B n = ");
+n = Convert.ToInt32(Console.ReadLine());
+int[,] secondArrayForTask = new int[m, n];
 
-FillMatrixElementsWithRandomIntValue(arrayForTask);
+FillMatrixElementsWithRandomIntValue(firstArrayForTask);
 FillMatrixElementsWithRandomIntValue(secondArrayForTask);
-PrintMatrix(arrayForTask, "!!!!!!Первоначальный массив A!!!!!!");
-PrintMatrix(secondArrayForTask, "!!!!!!Первоначальный массив B!!!!!!");
+PrintMatrix(firstArrayForTask, "************* МАТРИЦА A *************");
+PrintMatrix(secondArrayForTask, "************* МАТРИЦА B *************");
 
-Console.WriteLine($"{ReturnMinimunRowNumber(arrayForTask)} строка с наименьшими числами");
+int[,] productArray = ProductOfMatrixes(firstArrayForTask, secondArrayForTask);
+if (productArray[0, 0] != 0) PrintMatrix(productArray, "*************  ПРОИЗВЕДЕНИЕ МАТРИЦЫ А И B *************");
