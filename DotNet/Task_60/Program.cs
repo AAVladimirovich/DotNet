@@ -16,9 +16,20 @@ Console.WriteLine(@"Задача 60. Сформируйте трёхмерный
 26(1,0,1) 55(1,1,1)
 ");
 
-void FillMatrixElementsWithRandomIntValue(int[,,] argArray, int argMinRndValue = 1, int argMaxRndValue = 20)
+List<int> CreateNumberList(int argMaxValue = 1000)
+{
+    
+    List<int> numbersList = new List<int>();
+    for (int i = 0; i < argMaxValue; i++)
+        numbersList.Add(i);
+    //Console.WriteLine(string.Join(",", numbersList)); // подсмотренно с интернета
+    return numbersList;
+}
+
+void FillMatrixElementsWithListIntValues(int[,,] argArray, List<int> numbersList)
 {
     var rndGenerator = new Random();
+    int memoryIndex = 0;
 
     for (int i = 0; i < argArray.GetLength(0); i++)
     {
@@ -26,7 +37,9 @@ void FillMatrixElementsWithRandomIntValue(int[,,] argArray, int argMinRndValue =
         {
             for (int k = 0; k < argArray.GetLength(2); k++)
             {
-                argArray[i, j, k] = rndGenerator.Next(argMinRndValue, argMaxRndValue + 1);
+                memoryIndex = rndGenerator.Next(0, numbersList.Count);
+                argArray[i, j, k] = numbersList[memoryIndex];
+                numbersList.RemoveAt(memoryIndex);
             }
         }
     }
@@ -83,7 +96,6 @@ int n = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите глубина ширины для трёхмерного массива A z = ");
 int z = Convert.ToInt32(Console.ReadLine());
 int[,,] firstArrayForTask = new int[m, n, z];
-
-
-FillMatrixElementsWithRandomIntValue(firstArrayForTask);
+List<int> listForNumbers = CreateNumberList(firstArrayForTask.Length);
+FillMatrixElementsWithListIntValues(firstArrayForTask,listForNumbers);
 PrintMatrix(firstArrayForTask, "************* МАТРИЦА A *************");
