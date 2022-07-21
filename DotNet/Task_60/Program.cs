@@ -98,4 +98,4 @@ int z = Convert.ToInt32(Console.ReadLine());
 int[,,] firstArrayForTask = new int[m, n, z];
 List<int> listForNumbers = CreateNumberList(firstArrayForTask.Length);
 FillMatrixElementsWithListIntValues(firstArrayForTask,listForNumbers);
-PrintMatrix(firstArrayForTask, "************* МАТРИЦА A *************");
+PrintMatrix(firstArrayForTask, "************* трёхмерный массив с неповторяющимися числами *************");
