@@ -20,7 +20,7 @@ List<int> CreateNumberList(int argMaxValue = 1000)
 {
     
     List<int> numbersList = new List<int>();
-    for (int i = 0; i < argMaxValue; i++)
+    for (int i = 10; i < argMaxValue; i++)
         numbersList.Add(i);
     //Console.WriteLine(string.Join(",", numbersList)); // подсмотренно с интернета
     return numbersList;
